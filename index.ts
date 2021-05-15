@@ -1,49 +1,7 @@
-// function logData(message: string): ClassDecorator {
-//     console.log(`Message is: ${message}`);
-//     return function (): void {
-//         console.log('constructor');
-//     }
-// }
+import { CodeValidator } from './CodeValidator';
 
+const validator = new CodeValidator();
 
-// @logData('Hello World')
-// class User{
-//     public firstName:string;
-//     public lastName:string;
+const retorno = validator.isAcceptable("12345");
 
-//     constructor(firstName: string, lastName: string) {
-//         this.firstName = firstName;
-//         this.lastName = lastName;
-//     }
-// }
-
-// const user = new User("Lucas","Cesconetto");
-
-interface Config {
-    config:string
-}
-
-@logClassWithArgs({config:'xxxx'})
-class Person {
-    constructor(public name:string){}
-}
-
-@logClassWithArgs({config:'zzzz'})
-class Animal {
-    constructor(public name:string){}
-}
-
-function logClassWithArgs(filter:Config){
-    return (target: Object) => {
-        if(filter.config === 'xxxx'){
-            console.log('pessoa');
-        }
-    }
-}
-
-const p = new Person('teste');
-const a = new Animal('Dog');
-
-
-console.log(p);
-console.log(a);
+console.log(retorno);
